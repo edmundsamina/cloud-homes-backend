@@ -8,19 +8,17 @@ export async function getAllProperties(){
 
 //search by question topic
 export async function getPropertiesByLocation(location){
-    const result = await query("SELECT * FROM properties where location LIKE $1," [`%${location}%`])
+    const result = await query("SELECT * FROM properties WHERE location LIKE $1", ['%' + location.toLowerCase() + '%'])
     return result.rows
 }
 
 //get question by id
 export async function getPropertiesByName(name){
-    const propertiesByName = await query("SELECT * FROM properties where  name LIKE $1%", [`%${name}%`])
-        
+    const propertiesByName = await query("SELECT * FROM properties WHERE name LIKE $1", ['%' + name.toLowerCase() + '%'])   
     return propertiesByName.rows[0]
 }
 //get question by id
 export async function getPropertiesByDescription(description){
-    const propertiesByDesc = await query("SELECT * FROM properties where  description LIKE $1%", [`%${description}%`])
-        
-    return propertiesByDesc.rows[0]
+    const propertiesByDesc = await query("SELECT * FROM properties WHERE LOWER(description) LIKE $1", ['%' + description.toLowerCase() + '%'])
+    return propertiesByDesc.rows   
 }
