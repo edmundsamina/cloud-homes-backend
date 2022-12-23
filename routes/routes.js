@@ -4,7 +4,7 @@ var propertiesRouter = express.Router();
 import {
 getAllProperties,
 getPropertiesByDescription,
-getPropertiesByLocation,
+getPropertiesByMetaverse,
 getPropertiesByName
 
 } from "../models/models.js"
