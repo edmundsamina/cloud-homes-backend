@@ -6,11 +6,18 @@ export async function getAllProperties(){
     return allProperties.rows
 }
 
-//search by question metaverse
-export async function getPropertiesByMetaverse(metaverse){
-    const result = await query("SELECT * FROM properties WHERE metaverse LIKE $1", ['%' + metaverse.toUpperCase() + '%'])
+// //search by  metaverse
+// export async function getPropertiesByMetaverse(metaverse){
+//     const result = await query("SELECT * FROM properties WHERE metaverse LIKE $1", ['%' + metaverse.toUpperCase() + '%'])
+//     return result.rows
+// }
+
+//search by  metaverse AND rent or buy
+export async function getPropertiesByMetaverse(metaverse, rent){
+    const result = await query("SELECT * FROM properties WHERE metaverse LIKE $1 AND rent = $2", ['%' + metaverse.toUpperCase() + '%', rent])
     return result.rows
-}
+} 
+
 
 //get question by name
 export async function getPropertiesByName(name){
