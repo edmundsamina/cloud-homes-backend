@@ -7,7 +7,7 @@ export async function getAllProperties(){
 }
 
 //search by question metaverse
-export async function getPropertiesByLocation(metaverse){
+export async function getPropertiesByMetaverse(metaverse){
     const result = await query("SELECT * FROM properties WHERE metaverse LIKE $1", ['%' + metaverse.toUpperCase() + '%'])
     return result.rows
 }
