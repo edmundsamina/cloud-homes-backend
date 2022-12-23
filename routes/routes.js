@@ -15,8 +15,8 @@ propertiesRouter.get("/", async function (req, res) {
       const result = await getPropertiesByLocation(req.query.location);
       return res.json({ success: true, payload: result });
     }
-    if (req.query.name !== undefined) {
-        const result = await getPropertiesByName(req.query.name);
+    if (req.query.metaverse !== undefined) {
+        const result = await getPropertiesByName(req.query.metaverse);
         return res.json({ success: true, payload: result });
       }
       if (req.query.description !== undefined) {
