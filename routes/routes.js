@@ -11,6 +11,7 @@ getPropertiesByName
 
 //get
 propertiesRouter.get("/", async function (req, res) {
+
     if (req.query.metaverse !== undefined) {
       const result = await getPropertiesByMetaverse(req.query.metaverse, req.query.rent, req.query.type,req.query.bedrooms, req.query.bathrooms);
       return res.json({ success: true, payload: result });
