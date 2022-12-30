@@ -40,7 +40,7 @@ let params = []
           sqlquery += ` property_type = '${type}'`;
         params.push(type);
       }
-    if (bedrooms > 0) {
+    if (bedrooms > 0 && bedrooms < 5) {
         if (params.length > 0) {
             sqlquery += ' AND';
           } else { 
@@ -49,8 +49,17 @@ let params = []
           sqlquery += ` bedrooms = ${bedrooms}`;
       params.push(bedrooms);
     }
+    if (bedrooms >= 5) {
+        if (params.length > 0) {
+            sqlquery += ' AND';
+          } else { 
+            sqlquery += ' WHERE';
+          }
+          sqlquery += ` bedrooms > 4`;
+      params.push(bedrooms);
+    }
   
-    if (bathrooms > 0) {
+    if (bathrooms > 0 && bathrooms <5) {
       if (params.length > 0) {
         sqlquery += ' AND';
       } else {
@@ -58,6 +67,15 @@ let params = []
       }
       sqlquery += ` bathrooms = ${bathrooms}`;
       params.push(bathrooms);
+    }
+    if (bathrooms >= 5) {
+        if (params.length > 0) {
+            sqlquery += ' AND';
+          } else { 
+            sqlquery += ' WHERE';
+          }
+          sqlquery += ` bathrooms > 4`;
+      params.push(bedbathroomsrooms);
     }
     console.log(sqlquery)
     console.log(params)
